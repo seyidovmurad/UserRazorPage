@@ -1,0 +1,29 @@
+﻿@page "/"
+@model UserRazorPage.Pages.User.IndexModel
+
+<div>
+    <div class="head">
+        <h3>Users</h3>
+        <a class="nav-link text-dark" asp-area="" asp-page="/User/Add"><i class="fas fa-plus"></i> Add</a>
+    </div>
+    <hr />
+</div>
+<div class="models">
+    @foreach (var emp in Model.Employees)
+        {
+    <div class="cart">
+        <div class="cart-img">
+            <img src=@(emp.ImgUrl ?? "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg") alt="profile_pic">
+        </div>
+        <div class="cart-body">
+            <h2>@emp.Name @emp.Surname</h2>
+            <p><span>Email:</span>@emp.Email</p>
+            <p><span>Phone:</span>@emp.Phone</p>
+        </div>
+        <div class="cart-action">
+                <a href="/user/add/?id=@emp.Id" class="view">View</a>
+                <a href="/?handler=delete&id=@emp.Id">Delete</a>     
+        </div>
+    </div>
+        }
+</div>
